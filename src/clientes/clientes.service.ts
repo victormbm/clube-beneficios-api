@@ -31,4 +31,9 @@ export class ClientesService {
   async findAll(): Promise<Cliente[]> {
     return this.clienteModel.find({}).select('-senha');
   }
+
+  async findByEmail(email: string): Promise<Cliente | null> {
+    return this.clienteModel.findOne({ email });
+}
+
 }
