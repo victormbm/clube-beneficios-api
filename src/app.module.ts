@@ -1,11 +1,13 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ClientesModule } from './clientes/clientes.module';
+import { ProdutosModule } from './produtos/produtos.module';
 
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://localhost/clube-beneficios'),
     ClientesModule,
+    ProdutosModule,
   ],
 })
 export class AppModule {}
