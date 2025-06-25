@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { ComprasService } from './compras.service';
 import { CreateCompraDto } from './dto/create-compra.dto';
 import { Compra } from './schemas/compra.schema';
@@ -12,7 +12,7 @@ export class ComprasController {
     return this.comprasService.create(dto);
   }
 
-   @Get()
+  @Get()
   async findAll(@Query('cliente_id') clienteId?: string): Promise<Compra[]> {
     return this.comprasService.findAll(clienteId);
   }
