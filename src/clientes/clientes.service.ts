@@ -27,4 +27,8 @@ export class ClientesService {
 
     return cliente.save();
   }
+
+  async findAll(): Promise<Cliente[]> {
+    return this.clienteModel.find({}).select('-senha');
+  }
 }

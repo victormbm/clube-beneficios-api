@@ -28,4 +28,13 @@ export class ComprasService {
 
     return compra.save();
   }
+
+  async findAll(clienteId?: string): Promise<Compra[]> {
+    const filtro = clienteId ? { cliente_id: clienteId } : {};
+    return this.compraModel
+      .find(filtro)
+      .populate('cliente_id', 'nome email')
+      .populate('produto_id', 'nome preco');
+ }
+
 }

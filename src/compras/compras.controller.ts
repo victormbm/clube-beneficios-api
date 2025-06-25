@@ -11,4 +11,9 @@ export class ComprasController {
   async create(@Body() dto: CreateCompraDto): Promise<Compra> {
     return this.comprasService.create(dto);
   }
+
+   @Get()
+  async findAll(@Query('cliente_id') clienteId?: string): Promise<Compra[]> {
+    return this.comprasService.findAll(clienteId);
+  }
 }

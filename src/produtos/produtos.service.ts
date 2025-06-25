@@ -14,4 +14,15 @@ export class ProdutosService {
     const produto = new this.produtoModel(createProdutoDto);
     return produto.save();
   }
+
+  async findAll(precoMin?: number, precoMax?: number): Promise<Produto[]> {
+    const filtro: { preco?: { $gte?: number; $lte?: number } } = {};
+    if (precoMin !== undefined || precoMax !== undefined) {
+      filtro.preco = {};
+      if (precoMin !== undefined) filtro.preco.$gte = precoMin;
+      if (precoMax !== undefined) filtro.preco.$lte = precoMax;
+    }
+    return this.produtoModel.find(filtro);
+}
+  
 }
